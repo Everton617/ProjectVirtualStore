@@ -1,0 +1,168 @@
+@font-face {
+    font-family: 'textos';
+    src: url(../../fonts/ZonaPro-Bold.otf);
+}
+
+@font-face {
+    font-family: 'title';
+    src: url(../../fonts/Mokoto\ Demo.ttf) format('truetype');
+}
+
+
+#container {
+    background-color: #C11717;
+    width: 100vw;
+}
+
+.topBar {
+    display: flex;
+    height: 90px;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+    width: 100vw;
+    justify-content: space-around;
+}
+
+.contatos-area{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+
+.contatos-area a{
+    color: rgba(247, 247, 247, 0.89);
+    font-size: 13px;
+    margin-left: 15px;
+    font-family: 'textos';
+    
+}
+
+.contatos-area i {
+    margin-right: 5px;
+}
+
+.search-area {
+    display: flex;
+    width: 100vw;
+    margin-left: 20px;
+}
+
+.area-title{
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.area-title h1 {
+    text-align: left;
+    display: flex;
+    font-size: 45px;
+    margin: auto;
+    margin-left: 10px;
+    margin-right: 40px;
+    font-family: 'title';
+    color: white;
+}
+
+
+
+.search-bar {
+    height: 45px;
+    width: 900px;
+    border-radius: 20px;
+    border: none;
+    padding-left: 60px;
+    font-size: 16px;
+}
+
+.search-bar:focus {
+    border-color: #C11717;
+}
+
+.search-bar::placeholder {
+    font-size: 20px;
+    padding-left: 0px;
+    color: rgb(165, 162, 162);
+}
+
+.search-icon {
+    position: absolute;
+    left: 230px;
+    font-size: 30px;
+    color: rgb(85, 85, 85)525;
+}
+
+#conteiner-cadastro {
+    display: flex;
+    width: 400px;
+    
+}
+
+.cadastro-area {
+    display: flex;
+    align-items: center;
+    
+   
+}
+
+.span-login {
+    display: block;
+    width: 120px;
+    font-size: 14px;
+    color: white;
+    margin-right: 10px;
+}
+
+.span-login:hover{
+    cursor: pointer;
+}
+
+.icon-person {
+    font-size: 24px;
+    color: white;
+    margin-right: 10px;
+}
+.icon-person:hover{
+    cursor: pointer;
+}
+
+.icon-cad {
+    font-size: 24px;
+    color: white;
+    margin-right: 25px;
+    margin-left: 15px;
+}
+
+.icon-cad:hover{
+    cursor: pointer;
+}
+
+.icon-cart {
+    font-size: 24px;
+    margin: 15px;
+    color: white;
+}
+
+.span-cart {
+    background-color: #861a1a;
+    width: 80px;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.contador {
+    text-align: center;
+    font-size: 25px;
+    padding-right: 5px;
+}
+
+#conteiner-navbar {
+    display: flex;
+    flex-direction: row;
+}
