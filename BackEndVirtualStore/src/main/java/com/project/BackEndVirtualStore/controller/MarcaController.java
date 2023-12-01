@@ -14,40 +14,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.BackEndVirtualStore.entity.Estado;
-import com.project.BackEndVirtualStore.service.EstadoService;
-
+import com.project.BackEndVirtualStore.entity.Marca;
+import com.project.BackEndVirtualStore.service.MarcaService;
 
 @RestController
-@RequestMapping("/api/estado")
+@RequestMapping("/api/marca")
 @CrossOrigin
-public class EstadoController {
-    
+public class MarcaController {
+
     @Autowired
-    private EstadoService estadoService;
+    private MarcaService marcaService;
 
     @GetMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public List<Estado> buscarTodos(){
-        return estadoService.buscarTodos();
+    public List<Marca> buscarTodos(){
+       return marcaService.buscarTodos();
     }
 
     @PostMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public Estado inserir( @RequestBody Estado estado){
-        return estadoService.inserir(estado);
+    public Marca inserir(@RequestBody Marca objeto){
+        return marcaService.inserir(objeto);
     }
 
     @PutMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public Estado alterar( @RequestBody Estado estado){
-        return estadoService.alterar(estado);
+    public Marca alterar(@RequestBody Marca objeto){
+        return marcaService.alterar(objeto);
     }
 
     @DeleteMapping("/{id}")
-    @CrossOrigin("http://localhost:3000/")
-    public ResponseEntity<Void> excluir(@PathVariable("id")Long id){
-        estadoService.excluir(id);
+    public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
+        marcaService.excluir(id);
         return ResponseEntity.ok().build();
     }
 }

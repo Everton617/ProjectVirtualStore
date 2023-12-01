@@ -1,7 +1,6 @@
 package com.project.BackEndVirtualStore.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,42 +11,40 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.project.BackEndVirtualStore.entity.Estado;
-import com.project.BackEndVirtualStore.service.EstadoService;
-
+import com.project.BackEndVirtualStore.entity.ProdutoImagens;
+import com.project.BackEndVirtualStore.service.ProdutoImagensService;
 
 @RestController
-@RequestMapping("/api/estado")
+@RequestMapping("/api/produtoImagens")
 @CrossOrigin
-public class EstadoController {
+public class ProdutoImagensController {
     
     @Autowired
-    private EstadoService estadoService;
+    private ProdutoImagensService produtoImagensService;
 
     @GetMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public List<Estado> buscarTodos(){
-        return estadoService.buscarTodos();
+    public List<ProdutoImagens> buscarTodos(){
+       return produtoImagensService.buscarTodos();
     }
 
     @PostMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public Estado inserir( @RequestBody Estado estado){
-        return estadoService.inserir(estado);
+    public ProdutoImagens inserir(@RequestParam("idProduto") Long idProduto, @RequestParam("file") MultipartFile file){
+        return produtoImagensService.inserir(idProduto,file);
     }
 
     @PutMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public Estado alterar( @RequestBody Estado estado){
-        return estadoService.alterar(estado);
+    public ProdutoImagens alterar(@RequestBody ProdutoImagens objeto){
+        return produtoImagensService.alterar(objeto);
     }
 
     @DeleteMapping("/{id}")
-    @CrossOrigin("http://localhost:3000/")
-    public ResponseEntity<Void> excluir(@PathVariable("id")Long id){
-        estadoService.excluir(id);
+    public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
+        produtoImagensService.excluir(id);
         return ResponseEntity.ok().build();
     }
+
 }

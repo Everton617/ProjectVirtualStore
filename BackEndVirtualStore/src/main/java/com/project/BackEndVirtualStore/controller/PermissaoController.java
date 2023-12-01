@@ -1,9 +1,10 @@
 package com.project.BackEndVirtualStore.controller;
 
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,40 +15,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.BackEndVirtualStore.entity.Estado;
-import com.project.BackEndVirtualStore.service.EstadoService;
-
+import com.project.BackEndVirtualStore.entity.Permissao;
+import com.project.BackEndVirtualStore.service.PermissaoService;
 
 @RestController
-@RequestMapping("/api/estado")
+@RequestMapping("/api/permissao")
 @CrossOrigin
-public class EstadoController {
+public class PermissaoController {
     
     @Autowired
-    private EstadoService estadoService;
+    private PermissaoService permissaoService;
 
     @GetMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public List<Estado> buscarTodos(){
-        return estadoService.buscarTodos();
+    public List<Permissao> buscarTodos(){
+       return permissaoService.buscarTodos();
     }
 
     @PostMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public Estado inserir( @RequestBody Estado estado){
-        return estadoService.inserir(estado);
+    public Permissao inserir(@RequestBody Permissao objeto){
+        return permissaoService.inserir(objeto);
     }
 
     @PutMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public Estado alterar( @RequestBody Estado estado){
-        return estadoService.alterar(estado);
+    public Permissao alterar(@RequestBody Permissao objeto){
+        return permissaoService.alterar(objeto);
     }
 
     @DeleteMapping("/{id}")
-    @CrossOrigin("http://localhost:3000/")
-    public ResponseEntity<Void> excluir(@PathVariable("id")Long id){
-        estadoService.excluir(id);
+    public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
+        permissaoService.excluir(id);
         return ResponseEntity.ok().build();
     }
+
 }

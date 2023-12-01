@@ -14,40 +14,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.BackEndVirtualStore.entity.Estado;
-import com.project.BackEndVirtualStore.service.EstadoService;
-
+import com.project.BackEndVirtualStore.entity.Produto;
+import com.project.BackEndVirtualStore.service.ProdutoService;
 
 @RestController
-@RequestMapping("/api/estado")
+@RequestMapping("/api/produto")
 @CrossOrigin
-public class EstadoController {
+public class ProdutoController {
     
     @Autowired
-    private EstadoService estadoService;
+    private ProdutoService produtoService;
 
     @GetMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public List<Estado> buscarTodos(){
-        return estadoService.buscarTodos();
+    public List<Produto> buscarTodos(){
+       return produtoService.buscarTodos();
+    }
+
+    @GetMapping("/{id}")
+    public Produto buscarPorId(@PathVariable("id") Long id){
+       return produtoService.buscarPorId(id);
     }
 
     @PostMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public Estado inserir( @RequestBody Estado estado){
-        return estadoService.inserir(estado);
+    public Produto inserir(@RequestBody Produto objeto){
+        return produtoService.inserir(objeto);
     }
 
     @PutMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public Estado alterar( @RequestBody Estado estado){
-        return estadoService.alterar(estado);
+    public Produto alterar(@RequestBody Produto objeto){
+        return produtoService.alterar(objeto);
     }
 
     @DeleteMapping("/{id}")
-    @CrossOrigin("http://localhost:3000/")
-    public ResponseEntity<Void> excluir(@PathVariable("id")Long id){
-        estadoService.excluir(id);
+    public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
+        produtoService.excluir(id);
         return ResponseEntity.ok().build();
     }
+
 }

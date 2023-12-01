@@ -14,40 +14,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.BackEndVirtualStore.entity.Estado;
-import com.project.BackEndVirtualStore.service.EstadoService;
+import com.project.BackEndVirtualStore.entity.Cidade;
+import com.project.BackEndVirtualStore.service.CidadeService;
+
 
 
 @RestController
-@RequestMapping("/api/estado")
+@RequestMapping("/api/cidade")
 @CrossOrigin
-public class EstadoController {
+public class CidadeController {
     
     @Autowired
-    private EstadoService estadoService;
+    private CidadeService cidadeService;
 
     @GetMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public List<Estado> buscarTodos(){
-        return estadoService.buscarTodos();
+    public List<Cidade> buscarTodos(){
+        return cidadeService.buscarTodos();
     }
 
     @PostMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public Estado inserir( @RequestBody Estado estado){
-        return estadoService.inserir(estado);
+    public Cidade inserir( @RequestBody Cidade cidade){
+        return cidadeService.inserir(cidade);
     }
 
     @PutMapping("/")
-    @CrossOrigin("http://localhost:3000/")
-    public Estado alterar( @RequestBody Estado estado){
-        return estadoService.alterar(estado);
+    public Cidade alterar( @RequestBody Cidade cidade){
+        return cidadeService.alterar(cidade);
     }
 
     @DeleteMapping("/{id}")
-    @CrossOrigin("http://localhost:3000/")
     public ResponseEntity<Void> excluir(@PathVariable("id")Long id){
-        estadoService.excluir(id);
+        cidadeService.excluir(id);
         return ResponseEntity.ok().build();
     }
 }
